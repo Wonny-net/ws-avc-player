@@ -4,7 +4,7 @@ const Player = require('Broadway/Player')
 const { EventEmitter } = require('events')
 const debug = require('debug')
 
-const log = debug('wsavc')
+const log = console.log;
 class WSAvcPlayer extends EventEmitter {
     constructor ({ useWorker, workerFile } = {}) {
 
@@ -86,7 +86,8 @@ class WSAvcPlayer extends EventEmitter {
         this.ws.onmessage = (evt) => {
 
             if (typeof evt.data == 'string') {
-                return this.cmd(JSON.parse(evt.data))
+                this.emit('wsmessage', evt.data);
+                return
             }
 
             this.pktnum++
@@ -110,20 +111,6 @@ class WSAvcPlayer extends EventEmitter {
         }
 
         return this.ws
-    }
-
-    cmd (cmd) {
-        log('Incoming request', cmd)
-        switch (cmd.action) {
-        case 'initalize': {
-            const { width, height } = cmd.payload
-            // this.initCanvas(width, height)
-            return this.emit('initalized', cmd.payload)
-
-        }
-        default:
-            return this.emit(cmd.action, cmd.payload)
-        }
     }
 
     disconnect () {
