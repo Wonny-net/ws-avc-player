@@ -2,7 +2,7 @@
 
 const Player = require('Broadway/Player')
 const { EventEmitter } = require('events')
-const debug = require('debug')
+// const debug = require('debug')
 
 const log = console.log;
 class WSAvcPlayer extends EventEmitter {

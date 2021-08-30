@@ -66,27 +66,27 @@ const webpackConfig = {
             //         },
             //     ],
             // },
-            {
-                test: /\.wasm$/i,
-                type: 'javascript/auto',
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            // limit: false,
-                            // name: '[name].[ext]',
-                        },
-                    },
-                ],
-            },
-            {
-                test: /Decoder\.js$/,
-                loader: 'string-replace-loader',
-                options: {
-                    search: 'wasmBinaryFile="avc.wasm"',
-                    replace: 'wasmBinaryFile=require(\'Broadway/avc.wasm\')',
-                },
-            },
+            // {
+            //     test: /\.wasm$/i,
+            //     type: 'javascript/auto',
+            //     use: [
+            //         {
+            //             loader: 'url-loader',
+            //             options: {
+            //                 // limit: false,
+            //                 // name: '[name].[ext]',
+            //             },
+            //         },
+            //     ],
+            // },
+            // {
+            //     test: /Decoder\.js$/,
+            //     loader: 'string-replace-loader',
+            //     options: {
+            //         search: 'wasmBinaryFile="avc.wasm"',
+            //         replace: 'wasmBinaryFile=require(\'Broadway/avc.wasm\')',
+            //     },
+            // },
 
         ],
     },
